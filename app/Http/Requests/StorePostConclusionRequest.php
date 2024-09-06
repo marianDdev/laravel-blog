@@ -4,16 +4,15 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
-class StorePostRequest extends FormRequest
+class StorePostConclusionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        //return Auth::check();
-
         return true;
     }
 
@@ -25,12 +24,8 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'            => ['required', 'string'],
-            'summary'          => ['nullable', 'string'],
-            'first_paragraph'  => ['nullable', 'string'],
-            'second_paragraph' => ['nullable', 'string'],
-            'third_paragraph'  => ['nullable', 'string'],
-            'conclusion'       => ['nullable', 'string'],
+            'id'         => ['required', 'integer', Rule::exists('posts', 'id')],
+            'conclusion' => ['nullable', 'string'],
         ];
     }
 }

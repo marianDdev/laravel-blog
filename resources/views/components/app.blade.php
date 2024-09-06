@@ -23,11 +23,9 @@
         @livewireStyles
     </head>
     <body>
-        @include('layouts.navigation.index')
         <main>
             {{ $slot }}
         </main>
-        @include('layouts.footer')
         @livewireScripts
     </body>
 </html>

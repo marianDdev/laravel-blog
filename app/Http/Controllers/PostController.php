@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostConclusionRequest;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
@@ -37,7 +38,7 @@ class PostController extends Controller
         $validated['slug'] = $slug;
         $post              = Post::create($validated);
 
-        return redirect()->route('posts.show', ['slug' => $post->slug]);
+        return redirect()->route('sections.create', ['postId' => $post->id]);
     }
 
     public function edit(int $id): View
@@ -47,7 +48,23 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
     }
 
+    public function creteConclusion(int $id): View
+    {
+        $post = Post::findOrFail($id);
+
+        return view('posts.create_conclusion', ['post' => $post]);
+    }
+
     public function update(UpdatePostRequest $request): RedirectResponse
+    {
+        $validated = $request->validated();
+        $post      = Post::findOrFail($validated['id']);
+        $post->update($validated);
+
+        return redirect()->route('posts.show', ['slug' => $post->slug]);
+    }
+
+    public function storeConclusion(StorePostConclusionRequest $request): RedirectResponse
     {
         $validated = $request->validated();
         $post      = Post::findOrFail($validated['id']);
