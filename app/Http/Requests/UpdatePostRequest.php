@@ -23,12 +23,13 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['nullable', 'string'],
-            'summary' => ['nullable', 'string'],
-            'first_paragraph' => ['nullable', 'string'],
+            'id'               => ['required', 'integer', 'exists:posts,id'],
+            'title'            => ['nullable', 'string'],
+            'summary'          => ['nullable', 'string'],
+            'first_paragraph'  => ['nullable', 'string'],
             'second_paragraph' => ['nullable', 'string'],
-            'third_paragraph' => ['nullable', 'string'],
-            'conclusion' => ['nullable', 'string'],
+            'third_paragraph'  => ['nullable', 'string'],
+            'conclusion'       => ['nullable', 'string'],
         ];
     }
 }

@@ -12,7 +12,9 @@ class StorePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::check();
+        //return Auth::check();
+
+        return true;
     }
 
     /**
@@ -23,12 +25,12 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string'],
-            'summary' => ['nullable', 'string'],
-            'first_paragraph' => ['nullable', 'string'],
+            'title'            => ['required', 'string'],
+            'summary'          => ['nullable', 'string'],
+            'first_paragraph'  => ['nullable', 'string'],
             'second_paragraph' => ['nullable', 'string'],
-            'third_paragraph' => ['nullable', 'string'],
-            'conclusion' => ['nullable', 'string'],
+            'third_paragraph'  => ['nullable', 'string'],
+            'conclusion'       => ['nullable', 'string'],
         ];
     }
 }

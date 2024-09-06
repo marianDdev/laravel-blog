@@ -10,12 +10,14 @@ Route::group(['prefix' => '/'], function () {
     Route::post('/', [PostController::class, 'store'])->name('posts.store');
     Route::get('/{slug}', [PostController::class, 'show'])->name('posts.show');
     Route::get('/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    Route::get('/post/create-conclusion/{id}', [PostController::class, 'creteConclusion'])->name('posts.create_conclusion');
+    Route::patch('/post/store-conclusion', [PostController::class, 'storeConclusion'])->name('posts.store_conclusion');
     Route::patch('/', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/{id}', [PostController::class, 'delete'])->name('posts.delete');
 });
 
 Route::group(['prefix' => '/sections'], function () {
-    Route::get('/create', [SectionController::class, 'create'])->name('sections.create');
+    Route::get('/create/{postId}', [SectionController::class, 'create'])->name('sections.create');
     Route::post('/', [SectionController::class, 'storeBatch'])->name('sections.store');
     Route::get('/{slug}', [SectionController::class, 'show'])->name('sections.show');
     Route::get('/{id}/edit', [SectionController::class, 'edit'])->name('sections.edit');

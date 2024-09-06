@@ -11,8 +11,9 @@ class Section extends Model
     use HasFactory;
 
     protected $fillable = [
+        'post_id',
         'title',
-        'content'
+        'content',
     ];
 
     public function post(): BelongsTo
