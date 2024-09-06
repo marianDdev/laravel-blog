@@ -37,7 +37,7 @@ class PostController extends Controller
         $validated['slug'] = $slug;
         $post              = Post::create($validated);
 
-        return redirect()->route('posts.show', ['slug' => $post->slug]);
+        return redirect()->route('sections.create', ['post' => $post]);
     }
 
     public function edit(int $id): View
