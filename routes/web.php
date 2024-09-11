@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RobotsController;
@@ -7,13 +8,20 @@ use App\Http\Controllers\SectionController;
 use App\Http\Middleware\RedirectIfUserNotAdmin;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/robots.txt', [RobotsController::class, 'index']);
+Route::middleware('guest')->group(function () {
+    Route::get('login', [LoginController::class, 'create'])
+         ->name('login');
 
-Route::group(['prefix' => '/'], function () {
-    Route::get('/', [PostController::class, 'index'])->name('posts.index');
-    Route::get('/{slug}', [PostController::class, 'show'])->name('posts.show');
+    Route::post('login', [LoginController::class, 'store']);
 });
 
+Route::middleware('auth')->group(function () {
+    Route::post('logout', [LoginController::class, 'destroy'])
+         ->name('logout');
+});
+
+Route::get('/robots.txt', [RobotsController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])->name('posts.index');
 Route::middleware('auth')->group(function () {
     Route::group(['middleware' => RedirectIfUserNotAdmin::class], function () {
         Route::group(['prefix' => '/blog'], function () {
@@ -25,8 +33,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/create', [PostController::class, 'create'])->name('posts.create');
             Route::post('/', [PostController::class, 'store'])->name('posts.store');
             Route::get('/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
-            Route::get('/post/create-conclusion/{id}', [PostController::class, 'creteConclusion'])->name('posts.create_conclusion');
-            Route::patch('/post/store-conclusion', [PostController::class, 'storeConclusion'])->name('posts.store_conclusion');
+            Route::get('/create-conclusion/{id}', [PostController::class, 'creteConclusion'])->name('posts.create_conclusion');
+            Route::patch('/store-conclusion', [PostController::class, 'storeConclusion'])->name('posts.store_conclusion');
             Route::patch('/', [PostController::class, 'update'])->name('posts.update');
             Route::delete('/{id}', [PostController::class, 'delete'])->name('posts.delete');
         });
@@ -42,9 +50,9 @@ Route::middleware('auth')->group(function () {
     }
     );
 });
+Route::get('/{slug}', [PostController::class, 'show'])->name('posts.show');
+
 
 Route::fallback(function () {
     return view('not_found');
 });
-
-require __DIR__ . '/auth.php';
