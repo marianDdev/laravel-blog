@@ -1,8 +1,19 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SectionController;
 use Illuminate\Support\Facades\Route;
+
+
+Route::group(['prefix' => '/blog'], function () {
+    Route::get('/create', [BlogController::class, 'create'])->name('blog.create');
+    Route::post('/', [BlogController::class, 'store'])->name('blog.store');
+});
 
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [PostController::class, 'index'])->name('posts.index');

@@ -41,7 +41,7 @@ URL: https://flowbite.com/docs/components/typography/
                 @endforeach
                 @if(!is_null($post->conclusion))
                     <h3>Conclusion</h3>
-                    <p>{{ $post->conclusion }}</p>
+                    <p>{!! $post->conclusion !!}</p>
                 @endif
                 <section class="not-format">
                     <div class="flex justify-between items-center mb-6">

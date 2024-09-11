@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostConclusionRequest;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Blog;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -15,8 +16,9 @@ class PostController extends Controller
     public function index(): View
     {
         $posts = Post::paginate(10);
+        $blog  = Blog::first();
 
-        return view('posts.index', ['posts' => $posts]);
+        return view('posts.index', ['posts' => $posts, 'blog' => $blog]);
     }
 
     public function show(string $slug): View
