@@ -26,7 +26,7 @@
         <main>
             @include('layouts.sidebar')
         </main>
-        @include('layouts.footer')
+        {{--        @include('layouts.footer')--}}
         @livewireScripts
     </body>
 </html>

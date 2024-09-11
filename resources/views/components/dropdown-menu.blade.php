@@ -13,7 +13,7 @@
     id="user-dropdown">
     @if(Auth::check())
         <div class="px-4 py-3">
-            <span class="block text-sm font-bold text-gray-900">{{ $user->getFullName() }}</span>
+            <span class="block text-sm font-bold text-gray-900">Marian Dumitru</span>
         </div>
     @endif
 
