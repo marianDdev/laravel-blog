@@ -1,15 +1,4 @@
-{{--title--}}
-{{--summary--}}
-{{--first, second and third paragraph--}}
-
-{{--redirect to create section--}}
-{{--the first section create page should have 10 different title - content pairs for 10 sections--}}
-{{--and then add sections one by one redirecting from one to another if needed more than 10--}}
-{{--if less than 10 needed leave the rest of them empty--}}
-{{--every section create view should have 2 buttons "create and add another section" and "submit and go to conclusion"--}}
-{{--conclusion should update the post with conclusion--}}
-
-<x-guest-layout>
+<x-app-layout>
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Create a new post</h2>
@@ -58,4 +47,4 @@
             </form>
         </div>
     </section>
-</x-guest-layout>
+</x-app-layout>
