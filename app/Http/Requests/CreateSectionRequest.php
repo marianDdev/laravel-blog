@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\AuthUser;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateSectionRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+    use AuthUser;
+
     public function authorize(): bool
     {
-        return false;
+        return $this->authUser()->isAdmin();
     }
 
     /**

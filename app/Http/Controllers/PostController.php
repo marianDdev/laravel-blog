@@ -15,10 +15,18 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Post::paginate(10);
+        $posts = Post::paginate(10)->sortByDesc('created_at');
         $blog  = Blog::first();
 
         return view('posts.index', ['posts' => $posts, 'blog' => $blog]);
+    }
+
+    public function adminIndex(): View
+    {
+        $posts = Post::paginate(10)->sortByDesc('created_at');
+        $blog  = Blog::first();
+
+        return view('admin.posts.index', ['posts' => $posts, 'blog' => $blog]);
     }
 
     public function show(string $slug): View
@@ -26,6 +34,13 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->firstOrFail();
 
         return view('posts.show', ['post' => $post]);
+    }
+
+    public function adminShow(string $slug): View
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+
+        return view('admin.posts.show', ['post' => $post]);
     }
 
     public function create(): View
@@ -63,7 +78,7 @@ class PostController extends Controller
         $post      = Post::findOrFail($validated['id']);
         $post->update($validated);
 
-        return redirect()->route('posts.show', ['slug' => $post->slug]);
+        return redirect()->route('admin.posts');
     }
 
     public function storeConclusion(StorePostConclusionRequest $request): RedirectResponse

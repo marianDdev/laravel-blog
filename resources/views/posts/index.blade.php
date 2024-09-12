@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
             <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
@@ -21,9 +21,12 @@
                             </span>
                             <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
                         </div>
-                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a
-                                href="{{ route('posts.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a></h2>
-                        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ $post->summary }}</p>
+                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <a href="{{ route('posts.show', ['slug' => $post->slug]) }}">
+                                {{ $post->title }}
+                            </a>
+                        </h2>
+                        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ substr($post->summary, 0, 125) }}...</p>
                         <div class="flex justify-between items-center">
                             <div class="flex items-center space-x-4">
                                 <img class="w-7 h-7 rounded-full"
@@ -33,7 +36,7 @@
                                     Jese Leos
                                 </span>
                             </div>
-                            <a href="#"
+                            <a href="{{ route('posts.show', ['slug' => $post->slug]) }}"
                                class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
                                 Read more
                                 <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
@@ -49,4 +52,4 @@
             </div>
         </div>
     </section>
-</x-app-layout>
+</x-guest-layout>

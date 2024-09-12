@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class AuthenticatedSessionController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display the login view.
@@ -29,14 +28,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        /** @var User $user */
-        $user = $request->user();
-
-        if ($user->is_admin) {
-            return redirect()->route('admin.index');
-        }
-
-        return redirect()->intended(RouteServiceProvider::DASHBOARD);
+        return redirect()->intended(RouteServiceProvider::ADMIN_POSTS);
     }
 
     /**
