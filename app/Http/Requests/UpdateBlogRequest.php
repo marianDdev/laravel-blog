@@ -4,8 +4,9 @@ namespace App\Http\Requests;
 
 use App\Traits\AuthUser;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CreateSectionRequest extends FormRequest
+class UpdateBlogRequest extends FormRequest
 {
     use AuthUser;
 
@@ -22,7 +23,9 @@ class CreateSectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id'          => ['required', 'integer', 'exists:blogs,id'],
+            'title'       => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
         ];
     }
 }

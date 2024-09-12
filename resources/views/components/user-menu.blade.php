@@ -9,7 +9,6 @@
             <span class="text-xl font-bold text-gray-600 dark:text-gray-300">MD</span>
         </div>
     </button>
-    <!-- Dropdown menu -->
     @include('components.dropdown-menu')
     @include('components.mobile-dropdown-menu')
 </div>

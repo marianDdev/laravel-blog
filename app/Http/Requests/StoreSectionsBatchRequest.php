@@ -2,18 +2,18 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\AuthUser;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class StoreSectionsBatchRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+    use AuthUser;
+
     public function authorize(): bool
     {
-        return true;
+        return $this->authUser()->isAdmin();
     }
 
     public function rules(): array

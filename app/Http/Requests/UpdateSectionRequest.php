@@ -2,16 +2,17 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\AuthUser;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateSectionRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+    use AuthUser;
+
     public function authorize(): bool
     {
-        return false;
+
+        return $this->authUser()->isAdmin();
     }
 
     /**
@@ -22,7 +23,9 @@ class UpdateSectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id'      => ['required', 'integer', 'exists:sections,id'],
+            'title'   => ['required', 'string'],
+            'content' => ['required', 'string'],
         ];
     }
 }

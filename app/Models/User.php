@@ -7,7 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 /**
- * @property bool $is_admin
+ * @property bool   $is_admin
+ * @property string $first_name
+ * @property string $last_name
  */
 class User extends Authenticatable
 {
@@ -19,7 +21,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'is_admin',
         'email',
         'password',
         'is_admin',
@@ -51,5 +55,10 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         return $this->is_admin;
+    }
+
+    public function getFullName(): string
+    {
+        return sprintf('%s %s', $this->first_name, $this->last_name);
     }
 }

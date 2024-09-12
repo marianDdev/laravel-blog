@@ -22,11 +22,20 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/robots.txt', [RobotsController::class, 'index']);
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
+
 Route::middleware('auth')->group(function () {
     Route::group(['middleware' => RedirectIfUserNotAdmin::class], function () {
+        Route::group(['prefix' => 'admin'], function () {
+            Route::get('/posts', [PostController::class, 'adminIndex'])->name('admin.posts');
+            Route::get('/posts/{slug}', [PostController::class, 'adminShow'])->name('admin.posts.show');
+            Route::get('/posts/{id}/edit', [PostController::class, 'adminIndex'])->name('admin.posts.edit');
+        });
+
         Route::group(['prefix' => '/blog'], function () {
             Route::get('/create', [BlogController::class, 'create'])->name('blog.create');
             Route::post('/', [BlogController::class, 'store'])->name('blog.store');
+            Route::get('/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+            Route::patch('/', [BlogController::class, 'update'])->name('blog.update');
         });
 
         Route::group(['prefix' => '/posts'], function () {
@@ -40,9 +49,9 @@ Route::middleware('auth')->group(function () {
         });
 
         Route::group(['prefix' => '/sections'], function () {
+            Route::get('/{postId}', [SectionController::class, 'index'])->name('sections.index');
             Route::get('/create/{postId}', [SectionController::class, 'create'])->name('sections.create');
             Route::post('/', [SectionController::class, 'storeBatch'])->name('sections.store');
-            Route::get('/{slug}', [SectionController::class, 'show'])->name('sections.show');
             Route::get('/{id}/edit', [SectionController::class, 'edit'])->name('sections.edit');
             Route::patch('/', [SectionController::class, 'update'])->name('sections.update');
             Route::delete('/{id}', [SectionController::class, 'delete'])->name('sections.delete');
