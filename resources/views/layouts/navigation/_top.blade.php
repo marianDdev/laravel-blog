@@ -16,11 +16,6 @@
                         Contact
                     </a>
                 </li>
-{{--                <li>--}}
-{{--                    @if(\Illuminate\Support\Facades\Auth::check())--}}
-{{--                        @include('search.search-bar')--}}
-{{--                    @endif--}}
-{{--                </li>--}}
             </ul>
         </div>
     </div>

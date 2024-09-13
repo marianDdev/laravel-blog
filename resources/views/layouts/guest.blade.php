@@ -17,7 +17,7 @@
             <meta name="robots" content="index, follow">
         @endif
 
-        <title>CezAgora Connect</title>
+        <title>Insights</title>
         @vite(['resources/css/app.css','resources/js/app.js'])
         @livewireStyles
     </head>
@@ -26,7 +26,7 @@
         <main>
             {{ $slot }}
         </main>
-        {{--        @include('layouts.footer')--}}
+        @include('layouts.footer')
         @livewireScripts
     </body>
 </html>

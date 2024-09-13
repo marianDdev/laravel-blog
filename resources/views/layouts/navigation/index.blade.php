@@ -3,9 +3,5 @@
         @include('layouts.logo')
         @include('components.user-menu')
         @include('components.navigation-list')
-{{--        @include('users.forms.upload_profile_image_modal')--}}
     </div>
-{{--    <div class="w-1/4 items-center mx-auto">--}}
-{{--        @include('search.search-bar')--}}
-{{--    </div>--}}
 </nav>
