@@ -1,8 +1,8 @@
 <x-guest-layout>
-    <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
+    <main class="bg-white dark:bg-gray-900">
         <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
             <article
-                class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                 <header class="mb-4 lg:mb-6 not-format">
                     <address class="flex items-center mb-6 not-italic">
                         <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
@@ -22,16 +22,16 @@
                     <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{ $post->title }}</h1>
                 </header>
                 <p class="lead">{{ $post->summary }}</p>
-                <p>{{ $post->first_paragraph }}</p>
-                <p>{{ $post->second_paragraph }}</p>
-                <p>{{ $post->third_paragraph }}</p>
+                <p>{!! $post->first_paragraph !!}</p>
+                <p>{!! $post->second_paragraph!!}</p>
+                <p>{!! $post->third_paragraph !!}</p>
                 <figure><img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png" alt="">
                     <figcaption>Digital art by Anonymous</figcaption>
                 </figure>
 
                 @foreach($post->sections as $section)
-                    <h4>{{ $section->title }}</h4>
-                    <p>{{ $section->content }}</p>
+                    <h4>{!! $section->title !!}</h4>
+                    <p>{!! $section->content !!}</p>
                 @endforeach
                 @if(!is_null($post->conclusion))
                     <h3>Conclusion</h3>
