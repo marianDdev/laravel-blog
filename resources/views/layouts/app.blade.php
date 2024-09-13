@@ -17,7 +17,7 @@
 
         <link rel="icon" type="image/png" sizes="32x32" href="{{ url('/images/favicon-32x32.png') }}">
 
-        <title>CezAgora Connect</title>
+        <title>Insights</title>
 
         @vite(['resources/css/app.css','resources/js/app.js'])
         @livewireStyles
