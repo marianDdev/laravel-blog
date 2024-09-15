@@ -29,11 +29,11 @@
                         <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ substr($post->summary, 0, 125) }}...</p>
                         <div class="flex justify-between items-center">
                             <div class="flex items-center space-x-4">
-                                <img class="w-7 h-7 rounded-full"
-                                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+                                <img class="w-10 h-10 rounded-full"
+                                     src="{{ url('images/rightsupplier_logo.png') }}"
                                      alt="Jese Leos avatar" />
                                 <span class="font-medium dark:text-white">
-                                    Jese Leos
+                                    RightSupplier
                                 </span>
                             </div>
                             <a href="{{ route('posts.show', ['slug' => $post->slug]) }}"
