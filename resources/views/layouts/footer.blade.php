@@ -26,7 +26,8 @@
                         <a role="link" aria-disabled="true" class="hover:underline">Twitter</a>
                     </li>
                     <li class="mb-4">
-                        <a role="link" aria-disabled="true" class="hover:underline">Facebook</a>
+                        <a href="https://www.facebook.com/profile.php?id=61565143203769" target="_blank"
+                           class="hover:underline">Facebook</a>
                     </li>
                     <li class="mb-4">
                         <a role="link" aria-disabled="true" class="hover:underline">Instagram</a>

@@ -6,12 +6,12 @@
                 <header class="mb-4 lg:mb-6 not-format">
                     <address class="flex items-center mb-6 not-italic">
                         <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                            <img class="mr-4 w-16 h-16 rounded-full"
-                                 src="{{ url('images/marian.jpeg') }}" alt="Marian Dumitru">
+                            <img class="mr-4 w-24 h-24 rounded-full"
+                                 src="{{ url('images/rightsupplier_logo.png') }}" alt="Marian Dumitru">
                             <div>
-                                <a href="#" rel="author"
-                                   class="text-xl font-bold text-gray-900 dark:text-white">Marian Dumitru</a>
-                                <p class="text-base text-gray-500 dark:text-gray-400">Co-Founder @ Right Supplier</p>
+                                <a href="https://www.rightsupplier.eu" rel="author"
+                                   class="text-xl font-bold text-gray-900 dark:text-white">by RightSupplier</a>
+                                <p class="text-base text-gray-500 dark:text-gray-400">Your no. 1 hospitality platform</p>
                                 <p class="text-base text-gray-500 dark:text-gray-400">
                                     <time pubdate datetime="2022-02-08"
                                           title="February 8th, 2022">{{ $post->created_at->diffForHumans() }}</time>
