@@ -19,11 +19,6 @@
                     <span class="text-xl font-bold text-gray-600 dark:text-gray-300">{{ $initials }}</span>
                 </div>
             @endif
-        @else
-            <img
-                src="{{ url('/avatar.png') }}"
-                class="mx-auto mb-4 w-16 h-16 rounded-full"
-                alt="Avatar" />
         @endif
     </button>
     @include('components.dropdown-menu')
