@@ -48,11 +48,14 @@
                     <span class="font-semibold">Settings</span>
                 </li>
                 <li>
-                    <form action="{{ route('logout') }}" method="POST">
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="button" class="w-full mt-10 bg-[#EC5252] rounded-full py-1.5 text-white">
-                            Logout
-                        </button>
+
+                        <x-dropdown-link :href="route('logout')"
+                                         class="mt-10 bg-[#EC5252] rounded-full py-1.5 text-white"
+                                         onclick="event.preventDefault(); this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
                     </form>
                 </li>
             </ul>
