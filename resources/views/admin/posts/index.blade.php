@@ -1,8 +1,8 @@
 <x-app-layout>
     <section class="bg-white dark:bg-gray-900">
-        <button type="button" class="p-10 m-10 bg-green-500 rounded-full py-1.5 text-white">
+        <a href="{{ route('posts.create') }}" class="p-10 m-10 bg-green-500 rounded-full py-1.5 text-white">
             Create new post
-        </button>
+        </a>
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
             <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
                 <h2 class="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{ $blog->title }}</h2>
@@ -16,7 +16,8 @@
                             <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
                         </div>
                         <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a
-                                href="{{ route('posts.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a></h2>
+                                href="{{ route('posts.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                        </h2>
                         <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ substr($post->summary, 0, 125) }}...</p>
                         <div class="flex justify-between items-center">
                             <div class="flex items-center space-x-4">
