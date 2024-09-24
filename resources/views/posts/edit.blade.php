@@ -3,7 +3,7 @@
         <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Create a new post</h2>
 
-            <form action="{{ route('posts.update') }}" class="space-y-8" method="POST">
+            <form action="{{ route('posts.update') }}" class="space-y-8" method="POST" enctype="multipart/form-data">
                 @csrf @method('PATCH')
                 <input type="hidden" name="id" value="{{ $post->id }}">
                 <div>
@@ -58,6 +58,14 @@
                         {{ $post->conclusion }}
                     </textarea>
                     @include('components.error', ['field' => 'conclusion'])
+                </div>
+                <div class="mb-6">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                           for="post_image">Upload file</label>
+                    <input
+                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        id="post_image" name="post_image" type="file">
+                    <x-input-error :messages="$errors->get('post_image')" class="mt-2" />
                 </div>
                 <x-primary-button class="ml-4">
                     Save

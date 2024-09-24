@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Add product</h2>
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Add Sections</h2>
             <form action="{{ route('sections.store') }}" class="space-y-8" method="POST">
                 @csrf
                 <input type="hidden" name="post_id" value="{{ $post->id }}">

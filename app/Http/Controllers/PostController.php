@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Blog;
 use App\Models\Post;
+use App\Services\File\FileServiceInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
@@ -48,12 +49,19 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(StorePostRequest $request): RedirectResponse
+    public function store(
+        StorePostRequest     $request,
+        FileServiceInterface $fileService
+    ): RedirectResponse
     {
         $validated         = $request->validated();
         $slug              = Str::slug($validated['title']);
         $validated['slug'] = $slug;
         $post              = Post::create($validated);
+
+        if ($request->hasFile('post_image') && $request->file('post_image')->isValid()) {
+            $fileService->uploadPostImage($post);
+        }
 
         return redirect()->route('sections.create', ['postId' => $post->id]);
     }
@@ -72,11 +80,18 @@ class PostController extends Controller
         return view('posts.create_conclusion', ['post' => $post]);
     }
 
-    public function update(UpdatePostRequest $request): RedirectResponse
+    public function update(
+        UpdatePostRequest    $request,
+        FileServiceInterface $fileService
+    ): RedirectResponse
     {
         $validated = $request->validated();
         $post      = Post::findOrFail($validated['id']);
         $post->update($validated);
+
+        if ($request->hasFile('post_image') && $request->file('post_image')->isValid()) {
+            $fileService->uploadPostImage($post);
+        }
 
         return redirect()->route('admin.posts');
     }

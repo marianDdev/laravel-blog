@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
+/**
+ * @property string $image_url
+ */
 class Post extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
@@ -20,6 +23,7 @@ class Post extends Model implements HasMedia
         'second_paragraph',
         'third_paragraph',
         'conclusion',
+        'image_url',
     ];
 
     public function sections(): HasMany

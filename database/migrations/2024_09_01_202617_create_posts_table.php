@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->text('second_paragraph')->nullable();
             $table->text('third_paragraph')->nullable();
             $table->text('conclusion')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }

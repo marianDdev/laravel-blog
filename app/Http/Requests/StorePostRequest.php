@@ -29,6 +29,7 @@ class StorePostRequest extends FormRequest
             'second_paragraph' => ['nullable', 'string'],
             'third_paragraph'  => ['nullable', 'string'],
             'conclusion'       => ['nullable', 'string'],
+            'category_image'   => ['nullable', 'image'],
         ];
     }
 }

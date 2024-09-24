@@ -25,9 +25,8 @@
                 <p>{{ $post->first_paragraph }}</p>
                 <p>{{ $post->second_paragraph }}</p>
                 <p>{{ $post->third_paragraph }}</p>
-                <figure><img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png" alt="">
-                    <figcaption>Digital art by Anonymous</figcaption>
-                </figure>
+                
+                <figure><img src="{{ $post->image_url }}"></figure>
 
                 @foreach($post->sections as $section)
                     <h4>{{ $section->title }}</h4>
