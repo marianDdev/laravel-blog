@@ -26,7 +26,12 @@
                 <p>{!! $post->second_paragraph!!}</p>
                 <p>{!! $post->third_paragraph !!}</p>
 
-                <figure><img src="{{ $post->image_url }}"></figure>
+                <div class="w-3/5 h-3/5">
+                    <figure>
+                        <img src="{{ $post->image_url }}">
+                    </figure>
+                </div>
+
                 @foreach($post->sections as $section)
                     <h4>{!! $section->title !!}</h4>
                     <p>{!! $section->content !!}</p>
