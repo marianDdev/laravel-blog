@@ -49,10 +49,7 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(
-        StorePostRequest     $request,
-        FileServiceInterface $fileService
-    ): RedirectResponse
+    public function store(StorePostRequest $request, FileServiceInterface $fileService): RedirectResponse
     {
         $validated         = $request->validated();
         $slug              = Str::slug($validated['title']);
