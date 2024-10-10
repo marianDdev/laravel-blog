@@ -36,6 +36,6 @@ class BlogController extends Controller
         $blog      = Blog::findOrFail($validated['id']);
         $blog->update($validated);
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts');
     }
 }
