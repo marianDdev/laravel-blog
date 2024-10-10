@@ -8,7 +8,8 @@
         <meta name="description" content="Right Suppliers for hotels, restaurants, coffee shops and stores owners">
 
         <meta name="robots" content="index, follow">
-        <title>Insights</title>
+        <title>TheRightSupplier</title>
+        <link rel="icon" type="image/png" sizes="48x48" href="{{ url('/images/favicon.png') }}">
         @vite(['resources/css/app.css','resources/js/app.js'])
         @livewireStyles
     </head>

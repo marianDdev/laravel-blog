@@ -9,7 +9,8 @@
         <meta name="robots" content="index, follow">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ url('/images/favicon-32x32.png') }}">
 
-        <title>Insights</title>
+        <title>TheRightSupplier</title>
+        <link rel="icon" type="image/png" sizes="48x48" href="{{ url('/images/favicon.png') }}">
         @vite(['resources/css/app.css','resources/js/app.js'])
         @livewireStyles
     </head>
