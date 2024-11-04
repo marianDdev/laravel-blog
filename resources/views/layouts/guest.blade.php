@@ -15,7 +15,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         {{--        I have to get google site verification; this is from rightsupplier--}}
-        <meta name="google-site-verification" content="et7jNwFFATul7XdKscbz7EmFuGwsTcsnR2D8DstM7FU" />
+        <meta name="google-site-verification" content="Ol3Yum2zj57sRXHklXTfyoT3YpSUvcwzdKhgNbBbWk8" />
         <meta name="description" content="{!! $metaDescription !!}">
         <meta name="keywords" content="{!! $metaKeywords !!}">
 
