@@ -9,7 +9,10 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
+ * @property string $title
+ * @property string $slug
  * @property string $image_url
+ * @property string $summary
  */
 class Post extends Model implements HasMedia
 {

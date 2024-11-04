@@ -9,13 +9,9 @@ class RobotsController extends Controller
     public function index(): Response
     {
         $content = 'User-agent: *' . PHP_EOL;
-        if (env('APP_ENV') === 'production') {
-            $content .= 'Disallow: ';
-        } else {
-            $content .= 'Disallow: /';
-        }
+        $content .= 'Disallow:' . PHP_EOL;
+        $content .= 'Sitemap: ' . url('/trs-sitemap-v1.xml') . PHP_EOL;
 
         return response($content)->header('Content-Type', 'text/plain');
     }
 }
-
