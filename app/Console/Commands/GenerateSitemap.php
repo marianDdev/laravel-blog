@@ -43,7 +43,7 @@ class GenerateSitemap extends Command
                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_ALWAYS)
             );
         }
-        
-        $sitemap->writeToFile(public_path('trs-sitemap-v1.xml'));
+
+        $sitemap->writeToFile(public_path('trs-sitemap-v2.xml'));
     }
 }
