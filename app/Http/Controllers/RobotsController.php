@@ -10,7 +10,7 @@ class RobotsController extends Controller
     {
         $content = 'User-agent: *' . PHP_EOL;
         $content .= 'Disallow:' . PHP_EOL;
-        $content .= 'Sitemap: ' . url('/trs-sitemap-v1.xml') . PHP_EOL;
+        $content .= 'Sitemap: ' . url('/trs-sitemap-v2.xml') . PHP_EOL;
 
         return response($content)->header('Content-Type', 'text/plain');
     }
