@@ -44,6 +44,6 @@ class GenerateSitemap extends Command
             );
         }
 
-        $sitemap->writeToFile(public_path('trs-sitemap-v2.xml'));
+        $sitemap->writeToFile(public_path('sitemap.xml'));
     }
 }
