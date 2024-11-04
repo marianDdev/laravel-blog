@@ -8,18 +8,21 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Blog;
 use App\Models\Post;
 use App\Services\File\FileServiceInterface;
+use App\Services\Seo\SeoServiceInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-    public function index(): View
+    public function index(SeoServiceInterface $seoService): View
     {
         $posts = Post::paginate(10)->sortByDesc('created_at');
         $blog  = Blog::first();
+        $meta  = $seoService->getIndexMetaTags();
+        $data  = array_merge($meta, ['posts' => $posts, 'blog' => $blog, 'meta' => $meta]);
 
-        return view('posts.index', ['posts' => $posts, 'blog' => $blog]);
+        return view('posts.index', $data);
     }
 
     public function adminIndex(): View
@@ -30,11 +33,13 @@ class PostController extends Controller
         return view('admin.posts.index', ['posts' => $posts, 'blog' => $blog]);
     }
 
-    public function show(string $slug): View
+    public function show(SeoServiceInterface $seoService, string $slug): View
     {
         $post = Post::where('slug', $slug)->firstOrFail();
+        $meta = $seoService->getShowMetaTags($post);
+        $data = array_merge($meta, ['post' => $post]);
 
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', $data);
     }
 
     public function adminShow(string $slug): View
